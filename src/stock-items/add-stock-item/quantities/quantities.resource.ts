@@ -2,13 +2,14 @@ import { ResourceRepresentation } from '../../../core/api/api';
 import { useEffect, useState } from 'react';
 import { type StockItemInventoryFilter, useStockItemInventory } from '../../stock-items.resource';
 
-export function useStockItemQuantitiesHook(v?: ResourceRepresentation) {
+export function useStockItemQuantitiesHook(v?: ResourceRepresentation, initialStockItemUuid?: string) {
   const [stockItemFilter, setStockItemFilter] = useState<StockItemInventoryFilter>({
     startIndex: 0,
     v: v || ResourceRepresentation.Default,
     limit: 10,
     q: null,
     totalCount: true,
+    stockItemUuid: initialStockItemUuid,
   });
 
   const pageSizes = [10, 20, 30, 40, 50];
@@ -17,7 +18,7 @@ export function useStockItemQuantitiesHook(v?: ResourceRepresentation) {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [stockItemUuid, setStockItemUuid] = useState<string | null>();
+  const [stockItemUuid, setStockItemUuid] = useState<string | null>(initialStockItemUuid);
   const [partyUuid, setPartyUuid] = useState<string | null>();
   const [locationUuid, setLocationUuid] = useState<string | null>();
   const [stockBatchUuid, setStockBatchUuid] = useState<string | null>();

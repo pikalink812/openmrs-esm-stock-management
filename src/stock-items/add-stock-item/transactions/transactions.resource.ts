@@ -13,6 +13,7 @@ export function useStockItemsTransactions(filter?: StockItemInventoryFilter) {
     limit: 10,
     q: filter?.q,
     totalCount: true,
+    stockItemUuid: filter?.stockItemUuid,
   });
 
   const pageSizes = [10, 20, 30, 40, 50];

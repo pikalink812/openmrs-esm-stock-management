@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { formatDisplayDate } from '../../../core/utils/datetimeUtils';
@@ -14,16 +14,14 @@ interface BatchInformationProps {
 }
 
 const BatchInformation: React.FC<BatchInformationProps> = ({ stockItemUuid }) => {
-  const [stockItemFilter, setStockItemFilter] = useState<StockItemInventoryFilter>();
+  const [stockItemFilter, setStockItemFilter] = useState<StockItemInventoryFilter>({
+    stockItemUuid,
+  });
 
-  const { isLoading, items, totalCount, setCurrentPage, setStockItemUuid, setLocationUuid } =
+  const { isLoading, items, totalCount, setCurrentPage, setLocationUuid } =
     useStockItemBatchInformationHook(stockItemFilter);
   const { t } = useTranslation();
   const { control } = useForm({});
-
-  useEffect(() => {
-    setStockItemUuid(stockItemUuid);
-  }, [stockItemUuid, setStockItemUuid]);
   const tableHeaders = useMemo(
     () => [
       {

@@ -1,6 +1,6 @@
 import { DataTableSkeleton } from '@carbon/react';
 import { ArrowLeft } from '@carbon/react/icons';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import DataList from '../../../core/components/table/table.component';
@@ -19,22 +19,11 @@ interface TransactionsProps {
 const Transactions: React.FC<TransactionsProps> = ({ stockItemUuid }) => {
   const { t } = useTranslation();
 
-  const [stockItemFilter, setStockItemFilter] = useState<StockItemInventoryFilter>();
-  const {
-    isLoading,
-    items,
-    tableHeaders,
-    totalCount,
-    setCurrentPage,
-    setStockItemUuid,
-    setLocationUuid,
-    binCardHeaders,
-    inventory,
-  } = useStockItemsTransactions(stockItemFilter);
-
-  useEffect(() => {
-    setStockItemUuid(stockItemUuid);
-  }, [stockItemUuid, setStockItemUuid]);
+  const [stockItemFilter, setStockItemFilter] = useState<StockItemInventoryFilter>({
+    stockItemUuid,
+  });
+  const { isLoading, items, tableHeaders, totalCount, setCurrentPage, setLocationUuid, binCardHeaders, inventory } =
+    useStockItemsTransactions(stockItemFilter);
 
   const { control } = useForm({});
 

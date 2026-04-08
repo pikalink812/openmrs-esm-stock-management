@@ -201,7 +201,7 @@ const StockItemDetails = forwardRef<never, StockItemDetailsProps>(
             invalid={!!errors.preferredVendorUuid}
             invalidText={errors.preferredVendorUuid && errors?.preferredVendorUuid?.message}
           />
-          <StockItemCategorySelector
+          {/* <StockItemCategorySelector
             name="categoryUuid"
             controllerName="categoryUuid"
             control={control}
@@ -216,7 +216,7 @@ const StockItemDetails = forwardRef<never, StockItemDetailsProps>(
             placeholder={t('chooseACategory', 'Choose a category')}
             invalid={!!errors.categoryUuid}
             invalidText={errors.categoryUuid && errors?.categoryUuid?.message}
-          />
+          /> */}
           {observableIsDrug && (
             <DispensingUnitSelector
               name="dispensingUnitUuid"

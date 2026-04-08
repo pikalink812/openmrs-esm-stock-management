@@ -10,6 +10,7 @@ export function useStockItemBatchInformationHook(filter?: StockItemInventoryFilt
     q: filter?.q,
     totalCount: true,
     includeBatchNo: true,
+    stockItemUuid: filter?.stockItemUuid,
   });
 
   const pageSizes = [10, 20, 30, 40, 50];

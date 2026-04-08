@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ResourceRepresentation } from '../../../core/api/api';
 import { formatDisplayDate } from '../../../core/utils/datetimeUtils';
@@ -12,14 +12,11 @@ interface StockQuantitiesProps {
 }
 
 const StockQuantities: React.FC<StockQuantitiesProps> = ({ stockItemUuid }) => {
-  const { isLoading, items, totalCount, setCurrentPage, setStockItemUuid } = useStockItemQuantitiesHook(
+  const { isLoading, items, totalCount, setCurrentPage } = useStockItemQuantitiesHook(
     ResourceRepresentation.Default,
+    stockItemUuid,
   );
   const { t } = useTranslation();
-
-  useEffect(() => {
-    setStockItemUuid(stockItemUuid);
-  }, [stockItemUuid, setStockItemUuid]);
 
   const tableHeaders = useMemo(
     () => [

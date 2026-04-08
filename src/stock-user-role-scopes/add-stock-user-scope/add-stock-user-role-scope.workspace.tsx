@@ -252,7 +252,7 @@ const AddStockUserRoleScope: React.FC<AddStockUserRoleScopeProps> = ({ model, ed
   }
 
   return (
-    <Form className={styles.container}>
+    <Form className={styles.container} onSubmit={addStockUserRole}>
       <Stack className={styles.form} gap={5}>
         <div>
           {users?.results?.length > 0 && (
